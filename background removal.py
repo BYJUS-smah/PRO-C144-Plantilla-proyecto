@@ -1,55 +1,55 @@
-# import cv2 to capture videofeed
+# Importar cv2 para capturar el video.
 import cv2
 
 import numpy as np
 
-# attach camera indexed as 0
+# Establecer el índice de cámara como 0.
 camera = cv2.VideoCapture(0)
 
-# setting framewidth and frameheight as 640 X 480
+# Establecer el ancho y altura del cuadro como 640 X 480.
 camera.set(3 , 640)
 camera.set(4 , 480)
 
-# loading the mountain image
+# Cargar la imagen de la montaña.
 mountain = cv2.imread('mount everest.jpg')
 
-# resizing the mountain image as 640 X 480
+# Ajustar el tamaño de la imagen de la montaña a 640 X 480.
 
 
 while True:
 
-    # read a frame from the attached camera
+    # Leer el cuadro desde la cámara establecida.
     status , frame = camera.read()
 
-    # if we got the frame successfully
+    # Si obtenemos el cuadro exitosamente.
     if status:
 
-        # flip it
+        # Lo volteamos.
         frame = cv2.flip(frame , 1)
 
-        # converting the image to RGB for easy processing
+        # Convertir la imagen a RGB para un procesamiento sencillo.
         frame_rgb = cv2.cvtColor(frame , cv2.COLOR_BGR2RGB)
 
-        # creating thresholds
+        # Crear límites.
         lower_bound = np.array([])
         upper_bound = np.array([])
 
-        # thresholding image
+        # Poner límites a la imagen.
 
-        # inverting the mask
+        # Invertir la máscara.
 
-        # bitwise and operation to extract foreground / person
+        # Operación de bit a bit y operación para extraer el primer plano / persona.
 
-        # final image
+        # Imagen final.
 
-        # show it
+        # Mostrar la imagen final.
         cv2.imshow('frame' , frame)
 
-        # wait of 1ms before displaying another frame
+        # Esperar 1ms antes de mostrar otro cuadro.
         code = cv2.waitKey(1)
         if code  ==  32:
             break
 
-# release the camera and close all opened windows
+# Soltar la cámara y cerrar todas las ventanas abiertas.
 camera.release()
 cv2.destroyAllWindows()
